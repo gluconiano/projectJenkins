@@ -5,7 +5,6 @@ public class HolaMundoJenkins {
 		System.out.println("Hola peppo");
 		System.out.println("hola again");
 		System.out.println("hola again");
-		System.out.println("hola again");
 
 	}
 
