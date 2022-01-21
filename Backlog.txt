@@ -1,0 +1,207 @@
+Product backlog:
+- Yo como administrador quiero dar de alta un juego (poder guardar los juegos en un fichero)
+- Yo como administrador quiero eliminar un juego
+- Yo como administrador quiero editar un juego
+- Yo como administrador quiero obtener un listado de juegos
+- Yo como administrador quiero obtener un listado de editores
+- Yo como administrador quiero obtener un listado de géneros
+- Yo como administrador quiero obtener un listado de plataformas
+- Yo como administrador quiero obtener un listado juegos Siglo XX
+- Yo como administrador quiero obtener un listado juegos aparecidos en años pares
+- Yo como administrador quiero obtener un listado para las consolas de Nintendo
+- Yo como administrador quiero obtener un listado de juegos filtrados por género
+- Yo como administrador quiero obtener un listado de juegos filtrados por plataforma
+- Yo como administrador quiero obtener un listado de juegos filtrados por editor
+- Yo como administrador quiero obtener un listado de juegos filtrados por nombre del juego
+- Yo como administrador quiero obtener un listado de juegos filtrados por fecha(año)
+
+
+Planificación:
+- Yo como administrador quiero dar de alta un juego
+	- Investigar sobre Jira
+	- Crear Estructura Principal del proyecto
+	- Investigar sobre Git
+	- Crear sistema de repositorio de código
+	- Investigar sobre Lombok
+	- Crear Clase "Juego"
+		*Atributos: nombre, fecha, editor, género, plataforma
+		*Crear un constructor con todos los parámetros
+	- Crear enumerado de género: Action, Sports, Misc, Role-Playing, Shooter
+	- Crear enumerado de plataforma: DS, PS2, PS3, Wii, X360 (fabricante -> Atributo del Enum)
+	- Crear enumerado de editor: Electronic Arts, Activision, Namco Bandai Games, Ubisoft, Konami Digital Entertainment
+	- Crear la clase "EntradaTeclado" en la capa utilidades
+		* Método "String leerString(String msg)"
+		* Método "String leerString()"
+		* Método "int leerInt(String msg)"
+		* Método "int leerInt()"
+	- Crear clase "Menu" en la capa "gui": Primera etapa 2 opciones /// showMenu()
+		*1. Dar de alta
+		*0. Salir
+	- Implementar el método "void darDeAlta()" en la capa de datos
+		* Crear interfaz "IDAOJuegos" en la capa de datos
+		* Crear clase "DAOJuegosImpl"
+			* Crear atributo "juegos" de tipo List -> ArrayList
+			* Desarrollar el algoritmo del método
+	- Implementar el método "void darDeAlta()" en la capa de servicios
+		* Crear interfaz "IJuegosService" en la capa de servicios
+		* Crear clase "JuegosServiceImpl"
+			* Desarrollar el algoritmo del método
+	- Crear la clase "GestionJuegos" y la clase "Main" en la capa de control
+		* crear el método "void inicio()" 
+		* La clase "Main" llama al método "inicio()" de la clase "GestionJuegos"
+		* Llamar al Menu para imprimir el menuPrincipal
+		* Crear método "boolean seleccionaOpcion()"
+			* Llamar a "leerInt" de la capa utilidades
+			* Llamar al servicio "dar de alta" si se pulsa 1
+			* Llamar al método salir si se pulsa 0
+		* Crear método "boolean salir()"
+	- Pruebas unitarias para el método dar de alta:
+		* Probar un género no definido
+		* Probar una plataforma no definida
+		* Probar un editor no definido
+		* Probar que ningún campo sea null
+		* Probar que la fecha es correcta (año) (no es negativa, no es menor a 1950)
+		* Probar que no se pueden repetir juegos
+		* Comprobar que el año es un int
+		
+- Yo como administrador quiero obtener un listado de juegos
+	- Investigar sobre CSV
+	- Crear el método "void listarJuegos()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarJuegos()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*2. Listar juegos
+	- En la clase "GestionJuegos"
+		* llamar al método "void listarJuegos()" al seleccionar opcion 2. Listar juegos
+	- Pruebas unitarias para el método "listarJuegos"
+		* Probar que todos los elementos se encuentran en la lista (longitudes iguales)
+		* Si la lista está vacía tiene que devolver un mensaje indicando que no hay ningún juego
+		
+- Yo como administrador quiero obtener un listado de juegos filtrados por género
+	- Crear el método "listarJuegosPorGenero" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*3. Listar juegos por genero (sin tildes)
+	- En la clase "GestionJuegos"
+		* llamar al método "void listarJuegosPorGenero()" al seleccionar opcion 3. Listar juegos por genero (sin tildes)
+	- Pruebas unitarias para el método "listarJuegosPorGenero"
+		* Método a prueba de mayúsculas y minúsculas
+		* Comprobar que el género exista
+		* Comprobar que el género esté en formato correcto (que no sea un valor numérico o null)
+		
+		
+Prioridad media:
+- Yo como administrador quiero obtener un listado de editores MED
+- Yo como administrador quiero obtener un listado de géneros BAJA
+- Yo como administrador quiero obtener un listado de plataformas BAJA
+- Yo como administrador quiero obtener un listado juegos Siglo XX MED
+- Yo como administrador quiero obtener un listado juegos aparecidos en años pares BAJA
+- Yo como administrador quiero obtener un listado para las consolas de Nintendo MED
+
+------------------------------------------------------------------------------------------------------------
+
+SPRINT 2
+
+************ TAREAS PENDIENTES *****************
+
+- Gestionar la excepción "excepcionDuplicado"
+- Prueba unitaria de "listarJuegos()"
+- Nueva planificación Jira
+- Repaso de conceptos (Pruebas Unitarias)
+
+
+************ PRIORIDAD MEDIA *****************
+
+- Yo como administrador quiero obtener un listado de juegos de consolas de Nintendo
+	- Crear el método "List<Juego> listarJuegosNintendo()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarJuegosNintendo()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*5. Listar juegos de Nintendo (sin tildes)
+	- Llamar al método "void listarJuegosNintendo()" en la clase GestionJuegos al seleccionar opcion 5. Listar juegos de Nintendo (sin tildes)
+	- Pruebas unitarias para el método "listarJuegosNintendo()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* El tamaño sea correcto (filtrar sólo juegos Nintendo)
+		
+
+- Yo como administrador quiero obtener un listado de editores
+	- Crear el método "Set<Juego> listarEditores()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarEditores()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*6. Listar editores (sin tildes)
+	- Llamar al método "void listarEditores()" en la clase GestionJuegos al seleccionar opcion *6. Listar editores (sin tildes)
+	- Pruebas unitarias para el método "listarEditores()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* Que liste correctamente cuando todos los elementos son distintos
+		* Que liste correctamente cuando haya elementos repetidos
+
+
+- Yo como administrador quiero obtener un listado de juegos del siglo XX
+	- Crear el método "List<Juego> listarJuegosSigloXX()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarJuegosSigloXX()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*7. Listar juegos del siglo XX (sin tildes)
+	- Llamar al método "void listarJuegosSigloXX()" en la clase GestionJuegos al seleccionar opcion *7. Listar juegos del siglo XX (sin tildes)
+	- Pruebas unitarias para el método "listarJuegosSigloXX()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* Que liste correctamente
+
+************* PRIORIDAD BAJAS ****************
+
+- Yo como administrador quiero obtener un listado de géneros
+	- Crear el método "Set<Juego> listarGeneros()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarGeneros()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*8. Listar generos (sin tildes)
+	- Llamar al método "void listarGeneros()" en la clase GestionJuegos al seleccionar opcion *8. Listar generos (sin tildes)
+	- Pruebas unitarias para el método "listarGeneros()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* Que liste correctamente cuando todos los elementos son distintos
+		* Que liste correctamente cuando haya elementos repetidos
+
+-----------------------------------------------------------------------------------------------------------------
+
+SPRINT 3
+
+***************** TAREAS PENDIENTES *********************
+
+- Yo como administrador quiero obtener un listado de plataformas
+	- Crear el método "Set<Juego> listarPlataformas()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarPlataformas()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*9. Listar plataformas (sin tildes)
+	- Llamar al método "void listarPlataformas()" en la clase GestionJuegos al seleccionar opcion *9. Listar plataformas (sin tildes)
+	- Pruebas unitarias para el método "listarPlataformas()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* Que liste correctamente cuando todos los elementos son distintos
+		* Que liste correctamente cuando haya elementos repetidos
+
+
+- Yo como administrador quiero obtener un listado de juegos aparecidos en años pares
+	- Crear el método "List<Juego> listarJuegosPorAnyoPar()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void listarJuegosPorAnyoPar()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*10. Listar juegos de años pares (sin tildes)
+	- Llamar al método "void listarJuegosPorAnyoPar()" en la clase GestionJuegos al seleccionar opcion *10. Listar juegos de años pares (sin tildes)
+	- Pruebas unitarias para el método "listarJuegosPorAnyoPar()"
+		* Que devuelva la lista vacía si no hay ningún elemento 
+		* El tamaño sea correcto (filtrar sólo juegos de años pares)
+
+
+- Yo como administrador quiero editar un juego
+	- Crear el método "Juego editarJuego()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void editarJuego()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*11. Editar un Juego existente
+	- Llamar al método "void editarJuego()" en la clase GestionJuegos al seleccionar opcion *11. Editar un Juego existente
+	- Pruebas unitarias para el método "editarJuego()"
+		* Que edite un juego existente correctamente 
+		* El tamaño sea correcto (mismo length de la lista)
+
+
+- Yo como administrador quiero eliminar un juego
+	- Crear el método "Juego eliminarJuego()" en la Clase "DAOJuegosImpl" (previamente declarar en la interfaz)
+	- Crear el método "void eliminarJuego()" en la Clase "JuegosServiceImpl" (previamente declarar en la interfaz)
+	- Crear la opción en el menú
+		*12. Eliminar un Juego existente
+	- Llamar al método "void editarJuego()" en la clase GestionJuegos al seleccionar opcion *12. Eliminar un Juego existente
+	- Pruebas unitarias para el método "eliminarJuego()"
+		* Que la lista sea vacía si solo tiene un elemento a eliminar
+		* El tamaño sea correcto al eliminar (1 elemento menos en la lista)

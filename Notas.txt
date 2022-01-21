@@ -1,0 +1,40 @@
+Tiempo: 3 días
+3 Springs
+1º Spring : Tareas de prioridad alta
+2º Spring : Tareas de prioridad media + 1 baja
+3º Spring : Tareas de prioridad baja restantes 
+--------------------------------------------------
+Pendiente: Mejor formato, optimización visual, el metodo 12 siempre imprime que elimina algo, aunque ese algo no exista.
+
+Tecnologías usadas:
+Librería Lombok
+Librería log4j
+Librería CsvReader --- No aplicado 
+Librería assertj-core-3.21.0.jar
+Librería junit-jupit-api-5.8.1.jar
+
+Git
+Jira
+-------------------------------------------------
+De cara al cliente:
+
+Es un producto enseñable, con sus distintas funcionalidades, testadas y probadas.
+
+("===========================");
+("=== GESTION DE JUEGASOS ===");
+("===========================");
+("Selecciona opción:");
+("1) Dar de alta un juego");
+("2) Listar juegos");
+("3) Cargar juegos fichero");
+("4) Listar juegos por genero");
+("5) Listar juegos de Nintendo");
+("6) Listar editores");
+("7) Listar juegos XX");
+("8) Listar generos");
+("9) Listar por plataforma");
+("10) Listar juegos anyo par");
+("11) Editar juego existente");
+("12) Eliminar un juego existente");
+("0) Salir");
+
